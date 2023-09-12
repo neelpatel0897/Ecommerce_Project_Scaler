@@ -3,7 +3,6 @@ package dev.neelcoder.productservice.services;
 import org.springframework.stereotype.Service;
 
 import dev.neelcoder.productservice.dtos.GenericProductDto;
-import dev.neelcoder.productservice.models.Product;
 
 import java.util.List;
 
