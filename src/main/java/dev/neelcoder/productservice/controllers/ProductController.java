@@ -1,7 +1,8 @@
 package dev.neelcoder.productservice.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.neelcoder.productservice.dtos.GenericProductDto;
 import dev.neelcoder.productservice.services.productService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -35,10 +38,11 @@ public class ProductController {
     }  this is also not recommended*/
    
 
-    
-    @GetMapping
-    public void getAllProducts(){
 
+    //GET/products
+    @GetMapping
+    public List<GenericProductDto> getAllProducts(){
+        return productService.getAllProducts();
     }
 
     //localhost:8080/products/{id}
@@ -54,8 +58,8 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteProductById(@PathVariable("id")Long id){
-
+    public ResponseEntity<GenericProductDto> deleteProductById(@PathVariable("id")Long id){
+        return new ResponseEntity<>(productService.deleteProductById(id), HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("{id}")
