@@ -1,6 +1,5 @@
 package dev.neelcoder.productservice.dtos;
 
-import jakarta.websocket.server.ServerEndpoint;
 import lombok.Getter;
 import lombok.Setter;
 
