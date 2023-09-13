@@ -4,6 +4,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
@@ -107,4 +108,15 @@ public class FakeStroreProductService implements productService {
 
         return convertFakeStroreProductintoGenericProduct(fakeStoreProductDto);
         }
+
+    @Override
+    public GenericProductDto updateProductById(GenericProductDto product,Long id) {
+        RestTemplate restTemplate=restTemplateBuilder.build();
+
+        RequestCallback requestCallback = restTemplate.httpEntityCallback(product, FakeStoreProductDto.class);
+        ResponseExtractor<ResponseEntity<FakeStoreProductDto>> responseExtractor = restTemplate.responseEntityExtractor(FakeStoreProductDto.class);
+        ResponseEntity<FakeStoreProductDto> response=restTemplate.execute(specificProductRequestURL, HttpMethod.PUT, requestCallback, responseExtractor, id);
+
+        return convertFakeStroreProductintoGenericProduct(response.getBody());
+    }
 }

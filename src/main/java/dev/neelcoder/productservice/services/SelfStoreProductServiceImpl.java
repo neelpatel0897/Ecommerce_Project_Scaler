@@ -3,6 +3,7 @@ package dev.neelcoder.productservice.services;
 import org.springframework.stereotype.Service;
 
 import dev.neelcoder.productservice.dtos.GenericProductDto;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -25,6 +26,11 @@ public class SelfStoreProductServiceImpl implements productService {
 
     @Override
     public GenericProductDto deleteProductById(Long id) {
+        return null;
+    }
+
+    @Override
+    public GenericProductDto updateProductById(GenericProductDto product,Long id) {
         return null;
     }
 }
