@@ -1,16 +1,11 @@
 package dev.neelcoder.productservice.controllers;
 
+
+import dev.neelcoder.productservice.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import dev.neelcoder.productservice.dtos.GenericProductDto;
 import dev.neelcoder.productservice.services.productService;
@@ -47,9 +42,12 @@ public class ProductController {
 
     //localhost:8080/products/{id}
     @GetMapping("{id}")
-    public GenericProductDto getProductById(@PathVariable("id")Long id){
+    public GenericProductDto getProductById(@PathVariable("id")Long id) throws NotFoundException {
         return productService.getProductById(id);
     }
+
+
+
 
     @PostMapping
     public GenericProductDto createProduct(@RequestBody GenericProductDto product){
@@ -59,8 +57,9 @@ public class ProductController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<GenericProductDto> deleteProductById(@PathVariable("id")Long id){
-        return new ResponseEntity<>(productService.deleteProductById(id), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(productService.deleteProductById(id), HttpStatus.OK);
     }
+
 
     @PutMapping("{id}")
     public GenericProductDto updateProductById(@RequestBody GenericProductDto product,@PathVariable("id")Long id){

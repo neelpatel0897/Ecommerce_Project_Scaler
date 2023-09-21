@@ -1,4 +1,4 @@
-package dev.neelcoder.productservice.dtos;
+package dev.neelcoder.productservice.thirdpartyclients.productservice.fakestore;
 
 import lombok.Getter;
 import lombok.Setter;

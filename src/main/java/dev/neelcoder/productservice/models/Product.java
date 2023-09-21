@@ -1,5 +1,6 @@
 package dev.neelcoder.productservice.models;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
