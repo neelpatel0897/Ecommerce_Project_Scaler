@@ -7,7 +7,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
@@ -26,8 +26,8 @@ public class FakeStoreProductServiceClient{
     private String specificProductRequestURL;
     private String productsRequestBaseURL;
 
-    private String fakeStoreApiUrl;
-    private String fakeStoreProductsApiPath;
+  //  private String fakeStoreApiUrl;
+  //  private String fakeStoreProductsApiPath;
 
     FakeStoreProductServiceClient(RestTemplateBuilder restTemplateBuilder, @Value("${fakestore.api.url}")String  fakeStoreApiUrl,@Value("${fakestore.api.path.product}") String fakeStoreProductsApiPath){
         this.restTemplateBuilder=restTemplateBuilder;

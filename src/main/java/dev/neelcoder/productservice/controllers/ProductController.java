@@ -2,6 +2,7 @@ package dev.neelcoder.productservice.controllers;
 
 
 import dev.neelcoder.productservice.exceptions.NotFoundException;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ProductController {
 
     //@Autowired (no need no write a keyWord Autowired)
     //this method is recommended
-    public ProductController(@Qualifier("FakeStroreProductService")productService productService){
+    public ProductController( productService productService){
         this.productService=productService;
     }
     //Hello All
